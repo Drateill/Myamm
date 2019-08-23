@@ -1,0 +1,11 @@
+      .tables {
+          display: flex;
+          Flex-wrap: wrap;
+          Justify-content: space-around;
+      }
+
+      .table {
+          border-style: solid;
+          display: flex;
+          width: 10%;
+      }

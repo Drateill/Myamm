@@ -1,0 +1,16 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+<h1 align="center">Ajouter un utilisateur</h1>
+
+
+<div class="container">
+{{ form_start(form) }}
+
+{{ form_row(form.username, {'label' : 'Username'}) }}
+{{ form_row(form.role)}}
+{{ form_row(form.password, {'label' : 'password'}) }}
+{{ form_row(form.confirm_password, {'label' : 'confirmer le password'}) }}
+<button type="submit" class="btn btn-success">Register</button>
+{{ form_end(form) }}
+</div>
+{% endblock %}

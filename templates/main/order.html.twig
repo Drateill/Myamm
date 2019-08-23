@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+    .meal {
+        display: flex;
+        Flex-wrap: wrap;
+        Justify-content: space-around;
+    }
+
+    .order {
+        display: flex;
+        width: 50%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cModal {
+        position: fixed;
+        z-index: 99999;
+        background: whitesmoke;
+        opacity: 0;
+        pointer-events: none;
+        width : 30%;
+        background-color: white;
+        border-radius:10px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding-box;
+        background-clip: padding-box;
+    }
+
+    #closedModal {
+        color: black;
+    }
+
+    .cModal:target {
+        opacity: 1;
+        pointer-events: auto;
+    }
+</style>
+
+
+
+<h1>Ici on prend les commandes de la table </h1>
+
+
+<div class="meal">
+        {% for genre in mealsType %}
+        {% block javascripts %}
+        {% endblock %}
+        <a id='{{ genre }}' class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
+            data-toggle="modal" data-target='m_{{ genre }}' href="#m_{{ genre }}">
+            {{ genre }}
+    
+        </a>
+        <div class="cModal" id="m_{{ genre }}">
+    
+            <div class="headerMenu">
+                <a button genre="button" class="close" aria-label="Close" href="#">
+                        <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+            <h4 align="center">{{ genre }}</h4>
+            {% for title in meals %}
+            {{ dump(title)}}
+            {% endfor %}
+        </div>
+    
+        {% endfor %}
+    
+    
+    </div>
+
+
+
+{% endblock %}

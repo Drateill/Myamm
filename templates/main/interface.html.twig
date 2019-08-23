@@ -1,0 +1,41 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+
+{% if app.user.role.title == "Admin" %}
+<h1>Admin</h1>
+<h2>Bienvenue dans votre interface de gestion de Myamm ! </h2>
+{% else %}
+{% block head %}
+<link rel="stylesheet"
+        href="../main/css/test.css">
+<style>
+        .tables{
+            display : flex;
+            Flex-wrap : wrap;
+            Justify-content : space-around;
+        }
+        .table{
+            display : flex;
+            width: 10%;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+        }
+</style>
+
+{% endblock %}
+
+<h1 align="center">{{ app.user.username }}</h1>
+<div class="tables">
+{% for table in tables %}
+<div class="table" name="{{ table.tableNumber | raw }}" >
+<a href="{{path('main_order', {'id' : table.tableNumber})}}" class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold">Table {{ table.tableNumber | raw }}</a>
+</div>
+{% endfor %}
+</div>
+{% endif %}
+
+
+
+{% endblock %}
