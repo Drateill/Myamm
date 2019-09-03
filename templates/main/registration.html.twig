@@ -1,5 +1,8 @@
 {% extends 'base.html.twig'%}
 {% block body %}
+
+{% if app.user.role.title == "Admin" %}
+
 <h1 align="center">Ajouter un utilisateur</h1>
 
 
@@ -13,4 +16,8 @@
 <button type="submit" class="btn btn-success">Register</button>
 {{ form_end(form) }}
 </div>
+{% else %}
+<h1>Vous devez être admin</h1>
+{% endif %}
+
 {% endblock %}

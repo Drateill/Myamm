@@ -65,8 +65,10 @@
                 </a>
             </div>
             <h4 align="center">{{ genre }}</h4>
-            {% for title in meals %}
-            {{ dump(title)}}
+            {% for meal in meals %}
+            {% if meal.mealsType == genre %}
+            <p>{{ meal }}</p>
+            {% endif %}
             {% endfor %}
         </div>
     
